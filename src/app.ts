@@ -1,15 +1,19 @@
 import * as express from "express";
 import * as path from "path";
 import * as logger from "morgan";
-import {Request , Response} from "express";
+import {Application, Request, Response} from "express";
 import {IndexRouter} from "./routes";
 import {UsersRouter} from "./routes/users";
 
 const cookieParser = require("cookie-parser");
 const createError = require("http-errors");
 
-class App {
+export class App {
     public app: express.Application;
+
+    static getApp(): Application {
+        return new App().app;
+    }
 
     constructor() {
         this.app = express();
@@ -50,5 +54,3 @@ class App {
         });
     }
 }
-
-export = new App().app;
