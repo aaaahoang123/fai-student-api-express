@@ -9,20 +9,40 @@ const cookieParser = require("cookie-parser");
 const createError = require("http-errors");
 
 export class App {
-    public app: express.Application;
+    // express application
+    readonly app: Application;
 
-    static getApp(): Application {
-        return new App().app;
+    /**
+     * routing the app
+     */
+    private routing(): void {
+        this.app.use("/", new IndexRouter().router);
+        this.app.use("/users", new UsersRouter().router);
     }
 
+    /**
+     * App getter
+     * @returns {e.Application}
+     */
+    getApp(): Application {
+        return this.app;
+    }
+
+    /**
+     * Define the app
+     * run middleware, routing and errorHandle
+     */
     constructor() {
         this.app = express();
         this.middleware();
         this.routing();
-        this.errorHandle();
+        this.handleError();
     }
 
-    middleware(): void {
+    /**
+     * Add middleware for the app
+     */
+    private middleware(): void {
         this.app.set("views", path.join(__dirname, "../views"));
         this.app.set("view engine", "pug");
         this.app.use(logger("dev"));
@@ -32,12 +52,10 @@ export class App {
         this.app.use(express.static(path.join(__dirname, "public")));
     }
 
-    routing(): void {
-        this.app.use("/", new IndexRouter().router);
-        this.app.use("/users", new UsersRouter().router);
-    }
-
-    errorHandle(): void {
+    /**
+     * Handle the error
+     */
+    private handleError(): void {
         // catch 404 and forward to error handler
         this.app.use(function(req: Request, res: Response, next) {
             next(createError(404));
