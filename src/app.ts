@@ -8,7 +8,7 @@ import {UsersRouter} from "./routes/users";
 const cookieParser = require("cookie-parser");
 const createError = require("http-errors");
 
-export class App {
+class App {
     public app: express.Application;
 
     constructor() {
@@ -50,3 +50,5 @@ export class App {
         });
     }
 }
+
+export = new App().app;

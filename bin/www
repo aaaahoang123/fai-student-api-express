@@ -3,8 +3,7 @@
 /**
  * Module dependencies.
  */
-const App = require('../dist/app').App;
-var app = new App().app;
+var app =  require('../dist/app');
 var debug = require('debug')('template-nodejs:server');
 var http = require('http');
 
