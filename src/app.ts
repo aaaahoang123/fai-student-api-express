@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as path from "path";
 import * as logger from "morgan";
+import * as Sqlize from "sequelize";
 import {Application, Request, Response} from "express";
 import {IndexRouter} from "./routes";
 import {UsersRouter} from "./routes/users";

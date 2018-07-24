@@ -37,11 +37,14 @@
     "lodash": "^4.17.10",
     "mongoose": "^5.2.4",
     "morgan": "^1.9.0",
+    "mysql2": "^1.5.3",
     "nodemailer": "^2.6.4",
     "pug": "^2.0.3",
-    "request": "^2.87.0"
+    "request": "^2.87.0",
+    "sequelize": "^4.38.0"
   },
   "devDependencies": {
+    "@types/sequelize": "^4.27.24",
     "@types/async": "^2.0.40",
     "@types/body-parser": "^1.17.0",
     "@types/connect-mongo": "0.0.32",

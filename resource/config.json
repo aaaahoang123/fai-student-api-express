@@ -1,0 +1,5 @@
+{
+  "mysql": {
+    "url": "mysql://root:@localhost/fai_university"
+  }
+}
